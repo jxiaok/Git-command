@@ -13,7 +13,7 @@ git diff 文件名  对比文件修改内容
 如果git status告诉你有文件被修改过，用git diff可以查看修改内容
 修改提交日志记录  git commit --amend   
 
-#### Git回退
+#### Reset
 git log 查看修改记录，一般使用 "git log --pretty=oneline" 或者“git  log --oneline”  
 git log 左边显示的是commit id（版本号）  
 首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交3628164...882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。  
@@ -51,7 +51,7 @@ git checkout  分支名    切换分支
 git merge  分支名   合并指定分支到当前分支  
 git branch -d dev   删除dev分支  
 
-#### 小结
+#### Branch
 Git鼓励大量使用分支：  
 查看分支：git branch  
 查看远程分支: git branch –a  
@@ -75,7 +75,7 @@ git stash list 列出储存的工作区
 git stash apply  恢复储存的工作区，但是恢复后，stash内容并不删除，需要用git stash drop来删除。  
 git stash pop  恢复储存的工作区，恢复的同时把stash内容也删了。  
 
-#### 小结
+#### Branch Push
 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。  
 开发一个新feature，最好新建一个分支；  
@@ -95,7 +95,7 @@ git push origin master  推送分支，就是把该分支上的所有本地提�
 如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
-#### 小结
+#### Remote
 查看远程库信息，使用git remote -v；  
 本地新建的分支如果不推送到远程，对其他人就是不可见的；  
 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；  
@@ -108,7 +108,7 @@ git show <tagname>   查看标签信息
 可以创建带有说明的标签，用-a指定标签名，-m指定说明文字
 格式：git tag -a v0.1 -m "version 0.1 released" 3628164  
 
-#### 小结
+#### Tag
 命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；  
 git tag -a <tagname> -m "blablabla..."可以指定标签信息；  
 git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；  
@@ -121,7 +121,7 @@ git tag -d <tagname>
 git push origin :refs/tags/<tagname> 或者git push origin --delete tag <tagname>  
 要看看是否真的从远程库删除了标签，可以登陆GitHub查看  
 
-#### 小结
+#### Push Tag
 git push origin <tagname>可以推送一个本地标签；  
 git push origin --tags可以推送全部未推送过的本地标签；  
 git tag -d <tagname>可以删除一个本地标签；  
@@ -137,7 +137,7 @@ nfs
 .gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！  
 
 
-#### 配置别名  
+#### Alias  
 git config --global alias.st status  现在可以使用git st 代替 git status  
 git config --global alias.unstage  'reset HEAD'  
 现在可以使用 git unstage  file代替 git reset HEAD file
