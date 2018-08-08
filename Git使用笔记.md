@@ -1,4 +1,4 @@
-# Git文档
+# Git使用笔记
 git init 目录名    生成版本库  
 git add  文件名    将文件添加到仓库（暂存区）  
 git commit   将文件提交到仓库,一般使用 git commit -m "提交的信息"  
